@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projektöversikt – Emma Sjöholm</title>
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Stilmallar -->
+    <link href="assets/style.css" rel="stylesheet">
+    <link href="assets/btn.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header via JS fetch -->
+    <div id="header"></div>
+    <main>
+        <!-- Introduktionstext -->
+        <section class="project-intro">
+            <p class="page-label">Projekt</p>
+            <h1>Projektöversikt</h1>
+            <p>En samling av mina utvalda projekt inom digital design</p>
+        </section>
+        <!--Projektlista-->
+        <div class="project-list">
+            <article class="project-cards">
+                <!-- Stratus väderapp -->
+                <a href="projectstratus.html">
+                    <img src="assets/images/stratus_overview.webp" alt="En mobil med projektet Stratus väderapplikatonens logotyp på skärmen">
+                    <div class="project-info">
+                        <h2>Stratus väderapp</h2>
+                        <ul class="tags">
+                            <li>Figma</li>
+                            <li>UX/UI</li>
+                            <li>Prototyp</li>
+                        </ul>
+                    </div>
+                    <div class="project-arrow">
+						<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24"  fill="#2421CF" viewBox="0 0 24 24" >
+							<!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+							<path d="M17 16V7H8v2h5.59l-6.3 6.29 1.42 1.42 6.29-6.3V16z"></path>
+						</svg>
+                    </div>
+                </a>
+            </article>
+            <!-- Kommande projekt (platshållare) -->
+            <article class="project-cards">
+                <div class="project-placeholder"></div>
+                <div class="project-info">
+                    <h2>Kommer snart</h2>
+                </div>
+            </article>
+            <article class="project-cards">
+                <div class="project-placeholder"></div>
+                <div class="project-info">
+                    <h2>Kommer snart</h2>
+                </div>
+            </article>
+            <article class="project-cards">
+                <div class="project-placeholder"></div>
+                <div class="project-info">
+                    <h2>Kommer snart</h2>
+                </div>
+            </article>
+        </div>
+    </main>
+    <!-- Footer via JS fetch -->
+    <div id="footer"></div>
+    <script src="includes/main.js"></script>
+</body>
+</html>
