@@ -1,105 +1,505 @@
-/* ================= Globala variabler ========================= */ :root  {
-  /*-- Primära färger --*/ --color-primary: #2421CF;
-  --color-primary-mid: #2048CB;
-  --color-primary-pale: #BBC8FC;
-  --color-primary-bg: #EDF1FF;
+/* =====================================================================
+   INNEHÅLL
+   1. Globala variabler
+   2. Grund (html, body, rubriker, text)
+   3. Bilder
+   4. Återanvändbara klasser
+   5. Etiketter, taggar och markeringar
+   6. Kort
+   7. Header och navigering
+   8. Footer
+   9. Startsida (index)
+  10. Projektöversikt
+  11. Projektsida (case)
+  12. Om mig
+  13. Responsivitet: 768px+, 968px+, 1200px+
+   ===================================================================== */
 
-  /*-- Mörkare färger --*/ --color-dark-navy: #1D1C6B;
-  --color-dark-text: #161925;
-  --color-dark-near: #1a1a1a;
-  --color-dark-tag: #2B2E48;
 
-  /*-- Neutrala färger --*/ --color-white: #FFFFFF;
-  --color-surface: #F6F9FF;
+/* ================= 1. Globala variabler ================= */
+:root {
+  /*-- Primära färger --*/
+  --color-primary: #5E6C55;
+  --color-primary-mid: #CAD5C5;
+  --color-primary-pale: #dbe6d9;
+  --color-primary-bg: #ffffff;
+  --color-complementary: #E7EF88;
+
+  /*-- Mörkare färger --*/
+  --color-dark-text: #0E160D;
+  --color-dark-near: #2D2D2D;
+  --color-dark-tag: #273e37;
+
+  /*-- Neutrala färger --*/
+  --color-white: #ffffff;
+  --color-white-text: #e7e7e7;
+  --color-surface: #fafafa;
   --color-border: #E1E1E1;
-  --color-border-accent: #BBC8FC;
-  --color-grey: #808080;
-  --color-label-blue: #809AFA;
+  --color-grey: #5e5e5e;
+  --color-mid-grey: #cdcdcd;
+  --color-light-grey: #f2f2f2;
 
-  /*-- Övriga färger --*/ --color-dot-inactive: #E0DAFF
-  ;
-  /* Typsnitt */ --font-heading: 'Montserrat', 'Trebuchet MS', Arial, sans-serif;
+  /*-- Typsnitt --*/
+  --font-heading: 'Montserrat', 'Trebuchet MS', Arial, sans-serif;
   --font-body: 'Manrope', system-ui, 'Segoe UI', Arial, sans-serif;
 
-  /* Typsnittsstorlekar */ --text-h1: 2rem;
-  --text-h2: 1.25rem;
-  --text-h3: 1.125rem;
-  --text-body: 0.85rem;
-  --text-small: 0.75rem;
-  --text-xs: 0.65rem;
+  /*-- Typsnittsstorlekar --*/
+  --text-3xl: 2.75rem;
+  --text-2xl: 2.25rem;
+  --text-xl: 1.5rem;
+  --text-lg: 1.12rem;
+  --text-md: 0.9rem;
+  --text-sm: 0.85rem;
+  --text-2xs: 0.65rem;
 
-  /* Avståndsstorlekar */ --space-xs: 0.25rem;
+  /*-- Avstånd --*/
+  --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
   --space-lg: 1.5rem;
   --space-xl: 2rem;
   --space-2xl: 3rem;
 
-  /* Radier */ --radius-sm: 0.5rem;
+  /*-- Hörnradier --*/
+  --radius-xs: 0.3rem;
+  --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
   --radius-pill: 999px;
 
-  /* Skuggor */ --shadow-header: 0px 4px 4px rgba(22, 25, 37, 0.10);
-
+  /*-- Skuggor --*/
+  --shadow-header: 0px 4px 4px rgba(22, 25, 37, 0.10);
   --shadow-btn: 0px 4px 4px rgba(22, 25, 37, 0.25);
-  /* Layout bredd */ --content-width: 85%;
+
+  /*-- Layoutbredd --*/
+  --content-width: min(85%, 70rem);
+  /* Smalare bredd för färdigheter och erfarenheter på Om mig */
+  --content-width-narrow: min(75%, 52rem);
 }
 
-/* ================ General ================== */ /* Nolla till standardmarginaler och sätt vit bakgrund */ body  {
+
+/* ================= 2. Grund ================= */
+
+/* Förhindrar sidled-scroll orsakad av element med 100vw */
+html {
+  overflow-x: clip;
+}
+
+/* Nolla standardmarginaler och sätt vit bakgrund */
+body {
   margin: 0;
   padding: 0;
   background-color: var(--color-white);
 }
 
-/* Begränsa bredd och centera allt utom hero-sektionerna */ main > section:not(#image_hero):not(.stratus-hero)  {
+/* Begränsa bredd och centrera alla sektioner utom hero och kontakt.
+   :where() nollar specificiteten så att mer specifika regler kan skriva över */
+main > section:where(:not(#image_hero):not(.case-hero):not(.contact-vfu)) {
   width: var(--content-width);
   margin-inline: auto;
 }
 
-/* Gemensam typografi och färg för rubrikerna */ h1, h2, h3  {
+/* Gemensam typografi och färg för rubriker */
+h1, h2, h3 {
   font-family: var(--font-heading);
   color: var(--color-dark-text);
 }
 
-/* Rubrikstorlekar */ h1  {
-  font-size: var(--text-h1);
-}
+/* h1: sidans huvudrubrik */
+h1 { font-size: var(--text-3xl); }
+/* h2: sektionsrubrik */
+h2 { font-size: var(--text-xl); }
+/* h3: underrubrik */
+h3 { font-size: var(--text-lg); }
 
-h2  {
-  font-size: var(--text-h2);
-}
-
-h3  {
-  font-size: var(--text-h3);
-}
-
-/* Brödtextens typografi och färg */ p  {
-  font-size: var(--text-body);
+/* Brödtext */
+p {
+  font-size: var(--text-md);
   font-family: var(--font-body);
-  color: var(--color-dark-text);
+  color: var(--color-grey);
   line-height: 1.4rem;
 }
 
-/* Etikett för sidans titel */ .page-label  {
+/* Listpunkter */
+li {
+  font-size: var(--text-sm);
+  color: var(--color-grey);
+}
+
+
+/* ================= 3. Bilder ================= */
+
+/* Bild i full bredd */
+.img-full {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-xs);
+  margin-block: var(--space-md);
+}
+
+/* Bilder bredvid varandra, lika breda */
+.img-row {
+  display: flex;
+  gap: var(--space-md);
+  margin-block: var(--space-md);
+  width: 100%;
+}
+
+/* Bilderna i raden delar lika på bredden och beskärs vid behov */
+.img-row img {
+  flex: 1 1 0;
+  min-width: 0;
+  border-radius: var(--radius-xs);
+  object-fit: cover;
+  display: block;
+}
+
+/* Visa hela bilden utan beskärning */
+.img-row--contain img {
+  object-fit: contain;
+}
+
+/* Bildrad som staplas på mobil och ligger på rad från 768px */
+.img-row--stack {
+  flex-direction: column;
+}
+
+/* Staplade bilder: full bredd och egen höjd */
+.img-row--stack img {
+  flex: none;
+  width: 100%;
+  height: auto;
+}
+
+/* Inspiration: mittenbilden ligger överst, lutar åt höger och har sidoskugga */
+.img-middle {
+  z-index: 2;
+  transform: rotate(3deg);
+  box-shadow: -1rem 0 0.5rem -0.5rem #0E160D40, 1rem 0 0.5rem -0.5rem #0E160D40;
+}
+
+/* Inspiration: sidobilderna lutar åt vänster och dras in under mittenbilden */
+.img-sides {
+  transform: rotate(-4deg);
+}
+
+/* Första sidobilden dras in under mittenbilden */
+.img-sides:first-child {
+  margin-right: -2rem;
+}
+
+/* Sista sidobilden dras in under mittenbilden */
+.img-sides:last-child {
+  margin-left: -2rem;
+}
+
+
+/* ================= 4. Återanvändbara klasser =================
+   Läggs till i HTML bredvid elementets specifika klass,
+   t.ex. <div class="card stack surface fill-width"> */
+
+/* .stack: barnen staplas vertikalt. Gap sätts på elementets egen klass */
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .stack-center: barnen staplas vertikalt och centreras i sidled */
+.stack-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* .container: gemensam innehållsbredd, centrerad */
+.container {
+  width: var(--content-width);
+  margin-inline: auto;
+}
+
+/* .fill-width: fyller förälderns bredd, padding räknas in */
+.fill-width {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* .surface: ljusgrå ruta med stora rundade hörn (kort, sektioner, projektkort) */
+.surface {
+  background-color: var(--color-light-grey);
+  border-radius: var(--radius-lg);
+}
+
+/* .info-box: rundade hörn för infobox som oftast är mörk (kombineras med .bg-dark) */
+.info-box {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* .bg-dark: mörk bakgrund med ljus text för rubriker, text, listor och etiketter.
+   Ligger efter .surface så att den vinner när båda används */
+.bg-dark {
+  background-color: var(--color-dark-near);
+}
+
+/* Vita rubriker på mörk bakgrund */
+.bg-dark h2,
+.bg-dark h3 {
+  color: var(--color-white);
+}
+
+/* Ljusgrå brödtext och listor på mörk bakgrund */
+.bg-dark p,
+.bg-dark ul li {
+  color: var(--color-white-text);
+}
+
+/* Gula etiketter på mörk bakgrund */
+.bg-dark .label {
+  color: var(--color-complementary);
+}
+
+/* .icon-circle: rund ikonruta med centrerat innehåll */
+.icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+}
+
+/* .btn-plain: knapp utan webbläsarens standardutseende */
+.btn-plain {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* .row-between: rad med innehåll i varsin ände, justerat uppåt */
+.row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* .row-between--center: samma rad men centrerad i höjdled */
+.row-between--center {
+  align-items: center;
+}
+
+
+/* ================= 5. Etiketter, taggar och markeringar ================= */
+
+/* Delat utseende för versaler med luft mellan bokstäverna */
+.page-label,
+.nav-meny-text {
+  font-weight: 600;
+  font-size: var(--text-2xs);
+  letter-spacing: 0.15em;
+}
+
+/* Etikett ovanför sidans huvudrubrik (pillform med ram) */
+.page-label {
   display: inline-block;
   text-align: center;
   align-self: start;
   justify-content: center;
   background-color: var(--color-primary-bg);
-  border: 1px solid var(--color-border-accent);
-  color: var(--color-grey);
+  border: 1px solid var(--color-primary-mid);
   border-radius: var(--radius-lg);
+  color: var(--color-dark-tag);
   padding: 0.1rem 0.6rem;
   width: auto;
-  letter-spacing: 0.15em;
   text-transform: uppercase;
-  font-weight: 500;
-  font-size: var(--text-small);
   font-family: var(--font-heading);
 }
 
-/* ================= Header navigering ================== */ /* Logotyp till vänster och hamburger-knapp till höger. Skuggning undertill på hela header */ header  {
+/* Liten grå versaltext ("MENY", "VANLIGA FRÅGOR", faktakort) */
+.nav-meny-text {
+  font-family: var(--font-body);
+  color: var(--color-grey);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Etikett: liten text i versaler. Färg och avstånd styrs av sammanhanget */
+.label {
+  font-weight: 700;
+  font-size: var(--text-sm);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+/* Etikett med text under: mer luft ovanför, tätt intill sin text */
+.label-group .label {
+  margin: var(--space-lg) 0 var(--space-xs) 0;
+}
+
+/* Första etiketten i en grupp behöver inget extra avstånd ovanför */
+.label-group:first-child .label {
+  margin-top: 0;
+}
+
+/* Texten direkt efter etiketten */
+.label-group .label + p,
+.label-group .label + ul {
+  margin-top: 0;
+}
+
+/* Delat utseende för taggar och datumtagg */
+.tags li,
+.date-tag {
+  background-color: var(--color-primary-pale);
+  color: var(--color-dark-tag);
+  font-size: var(--text-2xs);
+  font-family: var(--font-heading);
+}
+
+/* Lista med taggar (projektkort, om mig) */
+.tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+/* Varje tagg: pillform med luft runt texten */
+.tags li {
+  border-radius: var(--radius-pill);
+  padding: 0.4rem 0.8rem;
+}
+
+/* Datumtagg i kort, utan radbrytning */
+.date-tag {
+  border: 1px solid var(--color-primary-mid);
+  border-radius: var(--radius-lg);
+  padding: 0.2rem 0.7rem;
+  white-space: nowrap;
+  min-width: 4rem;
+  min-height: 1rem;
+  text-align: center;
+}
+
+/* Ord markerade med gradient (hero) */
+.highlight {
+  color: transparent;
+  background: linear-gradient(120deg, var(--color-primary) 0%, var(--color-primary-mid) 80%, var(--color-primary-pale) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+/* Ord markerade med gradient på mörk bakgrund */
+.highlight-secondary {
+  color: transparent;
+  background: linear-gradient(-120deg, var(--color-primary-bg) 0%, var(--color-primary-mid) 80%, var(--color-primary-pale) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+
+/* ================= 6. Kort ================= */
+
+/* Kort (kompetens, erfarenhet). Använd med .stack, .surface och .fill-width */
+.card {
+  gap: var(--space-xs);
+  padding: var(--space-lg);
+}
+
+/* Nolla inbyggd marginal på rubrik och text i kort */
+.card h3,
+.card p {
+  margin: 0;
+}
+
+/* Ikon och rubrik staplade vertikalt. Använd med .stack */
+.card-header {
+  gap: var(--space-md);
+}
+
+/* Cirkel runt ikonen. Använd med .icon-circle */
+.card-icon {
+  background-color: var(--color-primary-mid);
+  padding: var(--space-md);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Ikonen i kortet utan egen bakgrund eller padding */
+.card-header svg {
+  background: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+/* Titel och datum i samma rad. Använd med .row-between */
+.card-top {
+  margin-bottom: var(--space-xs);
+  gap: var(--space-sm);
+}
+
+/* Grå undertitel */
+.card-subtitle {
+  font-family: var(--font-heading);
+  color: var(--color-grey);
+}
+
+/* Grupp av kort: under varandra på mobil, på rad med .card-group--row från 768px.
+   Använd med .stack */
+.card-group {
+  gap: var(--space-md);
+}
+
+
+/* ================= 7. Header och navigering ================= */
+
+/* Punktlista för dropdown (mobil och desktop): linje på listan, prick på varje länk */
+.dropdown-list {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* Vertikal linje till vänster i dropdown-listan */
+.dropdown-list::before {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background-color: var(--color-border);
+}
+
+/* Länkarna i dropdown-listan, positionerade för pricken */
+.dropdown-list a {
+  position: relative;
+  padding-left: var(--space-md);
+}
+
+/* Prick framför varje länk i dropdown-listan */
+.dropdown-list a::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.75rem - 0.2rem + 1px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-primary);
+}
+
+/* Logotyp till vänster och hamburger-knapp till höger, skugga undertill */
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -107,40 +507,40 @@ h3  {
   box-shadow: var(--shadow-header);
 }
 
-/* Header stannar kvar högst upp vid skroll */ #header  {
+/* Header stannar kvar högst upp vid skroll */
+#header {
   position: sticky;
   top: 0;
   z-index: 300;
   background-color: var(--color-white);
 }
 
-/* Kvadratisk logotyp med lite utrymme ovanför för matchning med hamburger-knapp */ .logo  {
+/* Kvadratisk logotyp med utrymme ovanför för att matcha hamburger-knappen */
+.logo {
   width: var(--space-xl);
   height: auto;
   padding-top: 0.75rem;
 }
 
-/* Hamburger-knapp som öppnar menyn */ .hamburger-btn  {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  cursor: pointer;
+/* Hamburger-knapp som öppnar menyn. Använd med .btn-plain och .icon-circle */
+.hamburger-btn {
   padding: var(--space-sm);
   color: var(--color-dark-near);
   z-index: 200;
 }
 
-/* Hamburger-knapp blå vid hovring */ .hamburger-btn:hover  {
+/* Hamburger-knappen byter färg vid hover */
+.hamburger-btn:hover {
   color: var(--color-primary);
 }
 
-/* Hamburger-knapp döljs när nav-overlay är öppen */ .hamburger-btn.active  {
+/* Hamburger-knappen döljs när menyn är öppen */
+.hamburger-btn.active {
   display: none;
 }
 
-/* Fullskärmsoverlay syns ej när den är inaktiv */ #nav-overlay  {
+/* Fullskärmsmeny, osynlig och ej klickbar när den är inaktiv */
+#nav-overlay {
   position: fixed;
   inset: 0;
   background-color: var(--color-white);
@@ -155,48 +555,31 @@ h3  {
   transition: opacity 0.3s ease;
 }
 
-/* Fullskärmsoverlay synlig och klickbar vid JS .active */ #nav-overlay.active  {
+/* Fullskärmsmeny synlig och klickbar (JS lägger till .active) */
+#nav-overlay.active {
   opacity: 1;
   pointer-events: all;
 }
 
-/* Rad med meny-text till vänster och stäng-knapp till höger */ .nav-top  {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Liten grå "MENY"-text */ .nav-meny-text  {
-  font-weight: 600;
-  font-size: var(--text-small);
-  font-family: var(--font-body);
-  letter-spacing: 0.15em;
-  color: var(--color-grey);
-  margin: 0;
-}
-
-/* Vertikal lista utan punkter */ .nav-links  {
+/* Vertikal menylista utan punkter. Använd med .stack */
+.nav-links {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
 }
 
-/* Vardera meny staplas vertikalt */ .nav-links li  {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Rad med länkar och nummer utom nav-nummer-wrap för att undvika konflikt */ .nav-links li div:not(.nav-nummer-wrap)  {
+/* Rad med länk i menyn: länk till vänster, pil till höger */
+.nav-links li > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: var(--space-lg) 0;
 }
 
-/* Stora menyalternativ */ .nav-links li a  {
+/* Stora menyalternativ */
+.nav-links li a {
   display: flex;
+  align-items: center;
   gap: var(--space-md);
   text-decoration: none;
   color: var(--color-dark-text);
@@ -206,291 +589,426 @@ h3  {
   width: 100%;
 }
 
-/* Blå färg vid hovring */ .nav-links li a:hover  {
+/* Menyalternativ byter färg vid hover */
+.nav-links li a:hover {
   color: var(--color-primary);
 }
 
-/* Ljusblå siffra till höger om menyalternativen */ .nav-nummer  {
-  font-size: 0.9rem;
-  font-family: var(--font-heading);
-  color: var(--color-primary-pale);
-  white-space: nowrap;
-}
-
-/* Avdelare mellan menyalternativ */ .nav-links hr  {
+/* Avdelare mellan menyalternativ */
+.nav-links hr {
   border: none;
   border-top: 1px solid var(--color-border);
   margin: 0;
 }
 
-/* Kontakt-knapp längst ner i menyn för lätt åtkomst */ .nav-bottom  {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: auto;
-  padding-bottom: var(--space-2xl);
+/* Kontaktknapp längst ner i menyn. Använd med .stack-center */
+.nav-bottom {
+  margin-block: auto;
 }
 
-/* Wrapper för siffra och dropdown-pil bredvid "Projekt" */ .nav-nummer-wrap  {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-}
-
-/* Dold dropdown-lista som syns vid klick på pil */ .nav-dropdown  {
-  list-style: none;
-  padding: 0 0 var(--space-md) 2.5rem;
-  margin: 0;
+/* Dold dropdown-lista som visas vid klick på pilen */
+.nav-dropdown {
   display: none;
-  flex-direction: column;
-  gap: 0.75rem;
+  margin-bottom: var(--space-md);
 }
 
-/* Visa dropdown vid JS .active */ .nav-dropdown.active  {
+/* Visa dropdown (JS lägger till .active) */
+.nav-dropdown.active {
   display: flex;
 }
 
-/* Mindre indragen text för projektnamn */ .nav-dropdown li a  {
-  font-size: var(--space-md);
-  padding-left: var(--space-md);
+/* Mindre text för projektnamn i dropdown */
+.nav-dropdown li a {
+  font-size: 1rem;
 }
 
-/* Pil-knapp för att öppna och stänga dropdown */ .dropdown-toggle  {
-  background: none;
-  border: none;
-  cursor: pointer;
+/* Pilknapp som öppnar och stänger dropdown. Använd med .btn-plain */
+.dropdown-toggle {
   padding: 0;
   display: flex;
   align-items: center;
   transition: transform 0.3s ease;
 }
 
-/* Rotera pilen 180 grader */ .dropdown-toggle.active  {
+/* Rotera pilen 180 grader när dropdown är öppen */
+.dropdown-toggle.active {
   transform: rotate(180deg);
 }
 
-/* Ej visa desktopversion header på mindre skärmar */ .desktop-nav, .desktop-contact  {
+/* Desktopnavigering döljs på mindre skärmar */
+.desktop-nav,
+.desktop-contact {
   display: none;
 }
 
-/* ============== Footer ================ */ /* Footer med bakgrundsbild och innehåll längst ned */ #image_footer  {
-  position: relative;
-  background-image: url('images/footer_background.webp');
-  background-size: cover;
+
+/* ================= 8. Footer ================= */
+
+/* Footer: bild längst ner, länkar och ikoner ovanför. Använd med .stack-center */
+#image-footer {
+  background-image: url('images/footer_background.png');
+  background-size: auto 16rem;
   background-position: center bottom;
   background-repeat: no-repeat;
-  height: 35svh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  padding-bottom: var(--space-2xl);
   gap: var(--space-lg);
+  padding: var(--space-2xl) 0 calc(12rem + var(--space-sm));
 }
 
-/* Vertikala navigeringslänkar i footer */ .footer_nav  {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Navigeringslänkar i footern. Använd med .stack-center */
+.footer-nav {
   gap: var(--space-md);
 }
 
-/* Vita länkar utan understrykning */ .footer_nav a  {
+/* Länkar i footern, utan understrykning */
+.footer-nav a {
   font-weight: 400;
   font-family: var(--font-heading);
   text-decoration: none;
-  color: var(--color-white);
-}
-
-/* Ikoner i rad */ .footer_social  {
-  display: flex;
-  gap: var(--space-lg);
-}
-
-/* ============== Index ================ */ /* Fullskärmshero med bakgrundsbild */ #image_hero  {
-  position: relative;
-  background-image: url('images/hero_background.webp');
-  background-size: cover;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  height: 90svh;
-  width: 100%;
-}
-
-/* Centrerad text placeras i nedre delen av hero */ #text_hero  {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  bottom: 3rem;
-  padding: var(--space-md);
-  text-align: center;
-  left: 0;
-  right: 0;
-}
-
-/* Responsiv storlek på profilbild */ #text_hero img  {
-  width: clamp(11.25rem, 30vw, 20rem);
-  height: clamp(11.25rem, 30vw, 20rem);
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-/* Vit text mot mörk bakgrundsbild */ #text_hero h1, #text_hero p  {
-  color: var(--color-white);
-}
-
-/* Utrymme under brödtexten, men inte ovanför */ #text_hero p  {
-  margin-top: 0;
-  margin-bottom: 3rem;
-}
-
-/* För bättre radläsning */ #text_hero h1  {
-  font-size: 1.5rem !important;
-}
-
-/* Ljusblå färg för "Digital designer" i rubrik för att framhäva text */ .digital_designer  {
-  color: var(--color-primary-pale);
-}
-
-/* CTA-knappar bredvid varandra */ .hero_btns  {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-/* Kompetenskort med ljusblå bakgrund */ .cards  {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-xs);
-  background-color: var(--color-surface);
-  border-radius: var(--radius-lg);
-  border: 1.5px solid var(--color-border);
-  padding: var(--space-lg);
-  margin-bottom: var(--space-md);
-}
-
-/* Ikon och rubrik staplade vertikalt */ .cards_header  {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-}
-
-/* Nolla inbyggd margin på rubrik och text inuti kort */ .cards h3, .cards p  {
-  margin: 0;
-}
-
-/* Grå brödtext */ .cards p  {
   color: var(--color-grey);
 }
 
-/* Utrymme ovanför kompetensrubriken */ #qualification-headline  {
+/* Sociala ikoner */
+.footer-social {
+  display: flex;
+  gap: var(--space-xl);
+}
+
+
+/* ================= 9. Startsida (index) ================= */
+
+/* Hero med profilbild och text. Använd med .stack-center och .container */
+#image_hero {
+  background-image: none;
+  background-color: var(--color-white);
+  height: auto;
+  padding-bottom: var(--space-2xl);
+}
+
+/* Delat för hero-bilder: kvadratiska, beskurna och rundade */
+#image_hero > img,
+#text_hero img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+/* Profilbild som direkt barn i hero */
+#image_hero > img {
+  width: 70%;
+  max-width: 16rem;
+  margin-top: var(--space-xl);
+}
+
+/* Textblock i hero: vänsterjusterat med luft runt */
+#text_hero {
+  position: static;
+  text-align: left;
+  align-items: flex-start;
+  padding: var(--space-md);
+}
+
+/* Profilbild i text-hero */
+#text_hero img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Mörk text i hero med begränsad radlängd */
+#text_hero h1,
+#text_hero p {
+  color: var(--color-dark-text);
+  max-width: 45ch;
+}
+
+/* Utrymme under brödtexten, men inte ovanför */
+#text_hero p {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+/* Knappar bredvid varandra */
+.btns {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+/* Marquee: JS klonar .marquee-group så att loopen blir sömlös.
+   --marquee-gap styr både avstånd mellan orden och mellan grupperna */
+.marquee {
+  --marquee-gap: clamp(var(--space-2xl), 4vw, 5rem);
+  display: flex;
+  overflow: hidden;
+  background-color: var(--color-complementary);
+  padding: var(--space-md) 0;
+}
+
+/* Varje grupp flyttas exakt sin egen bredd åt vänster, sedan börjar den om */
+.marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--marquee-gap);
+  padding-right: var(--marquee-gap);
+  animation: scroll 45s linear infinite;
+}
+
+/* Ord i marquee */
+.marquee-group span {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  color: var(--color-dark-text);
+  font-weight: 600;
+}
+
+/* Punkt framför varje ord */
+.marquee-dot {
+  color: var(--color-primary) !important;
+  font-size: 1.5rem !important;
+  line-height: 1;
+}
+
+/* Marquee-animation: flyttar gruppen sin egen bredd åt vänster */
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+/* Ingen rörelse för dem som har animationer avstängda */
+@media (prefers-reduced-motion: reduce) {
+  /* Stäng av rörelsen i marquee */
+  .marquee-group {
+    animation: none;
+  }
+}
+
+/* Utrymme ovanför kompetensrubriken */
+#qualification-headline {
   padding-top: var(--space-xl);
 }
 
-/* Centrerad VFU-sektion med kontakt-knapp */ .contact_vfu  {
+/* ---- Vanliga frågor (.faq används med .stack) ---- */
+
+/* Rubriken "Bra att veta" centrerad */
+.faq h2 {
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: var(--space-xl) 0;
 }
 
-/* Utrymme ovanför kontakt-knapp */ .contact_vfu a  {
+/* Underrubrik i frågesektionen med luft under */
+.faq h3 {
+  margin: var(--space-sm) 0 var(--space-xl) 0;
+}
+
+/* Frågetext, skalar med telefonens bredd */
+.faq-question {
+  max-width: 30ch;
+  font-size: clamp(var(--text-md), 4cqw, 1.6rem);
+}
+
+/* Varje fråga avgränsas med linje */
+.faq-item {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-md) 0;
+}
+
+/* Linje även under sista frågan */
+.faq-item:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Svarstext i frågorna */
+.faq-item p {
+  font-size: clamp(var(--text-sm), 2.8cqw, 1.2rem);
+  margin: 0;
+  padding-bottom: var(--space-md);
+  line-height: 1.6;
+  max-width: 40ch;
+}
+
+/* Frågeraden: fråga till vänster, plusknapp till höger */
+.faq-btn {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-dark-text);
+  padding: var(--space-sm) 0;
+}
+
+/* Dölj webbläsarens egen pil */
+.faq-btn::-webkit-details-marker {
+  display: none;
+}
+
+/* Plusknapp som skalar med telefonens bredd. Använd med .icon-circle */
+.faq-icon {
+  width: clamp(2.25rem, 6cqw, 3.25rem);
+  height: clamp(2.25rem, 6cqw, 3.25rem);
+  border: 1px solid var(--color-border);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  background-color: var(--color-complementary);
+}
+
+/* Rotera + till × när frågan är öppen */
+details[open] .faq-icon {
+  transform: rotate(45deg);
+}
+
+/* Telefonbild som ram runt frågorna */
+.faq-phone-mockup {
+  position: relative;
+  width: clamp(320px, 85vw, 600px);
+  aspect-ratio: 898 / 1378;
+  margin-inline: auto;
+  margin-top: 3rem;
+  background-image: url('images/phone_background.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  container-type: inline-size;
+}
+
+/* Skärmytan inuti telefonen, scrollar om innehållet är högre */
+.faq-content {
+  position: absolute;
+  top: 12%;
+  left: 8%;
+  right: 8%;
+  bottom: 6%;
+  overflow-y: auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+/* ---- Kontaktsektion (VFU). Använd med .stack-center och .bg-dark ---- */
+
+/* Centrerad text med luft runt */
+.contact-vfu {
+  text-align: center;
+  padding: var(--space-2xl);
+}
+
+/* Luft ovanför och under knappen */
+.contact-vfu a {
   margin: var(--space-md) 0 var(--space-xl) 0;
 }
 
-/* Liten margin på rubrik och text */ .contact_vfu h2, .contact_vfu p  {
+/* Egen textfärg som skriver över .bg-dark */
+.contact-vfu h2,
+.contact-vfu p {
   margin: var(--space-sm);
+  color: var(--color-surface);
 }
 
-/* ============== Projektöversikt ================ */ /* Centrerad introtext */ .project-intro  {
+/* Begränsa radlängden på texten */
+.contact-vfu p {
+  max-width: 45ch;
+}
+
+/* Större rubrik */
+.contact-vfu h2 {
+  font-size: var(--text-2xl);
+}
+
+
+/* ================= 10. Projektöversikt ================= */
+
+/* Introtext. Använd med .stack */
+.project-intro {
   padding: var(--space-xl) 0 var(--space-md) 0;
-  display: flex;
-  flex-direction: column;
 }
 
-/* Nolla inbyggd margin på brödtext intro */ .project-intro p  {
+/* Introtexten utan övre marginal */
+.project-intro p {
   margin-top: 0;
 }
 
-/* Litet avstånd under h1 intro */ .project-intro h1  {
+/* Lite luft under rubriken */
+.project-intro h1 {
   margin-bottom: var(--space-sm);
 }
 
-/* Vertikal lista med projektkort */ .project-list  {
-  width: var(--content-width);
-  margin-inline: auto;
-  display: flex;
-  flex-direction: column;
+/* Större brödtext */
+.copy {
+  font-size: var(--text-lg);
+}
+
+/* Lista med projektkort. Använd med .stack och .container */
+.project-list {
   gap: var(--space-md);
   padding-bottom: var(--space-2xl);
 }
 
-/* Projektkort med ram och rundade hörn */ .project-cards  {
-  border-radius: var(--radius-lg);
+/* Projektkort med ram. Använd med .surface */
+.project-cards {
   overflow: hidden;
   position: relative;
   border: 1px solid var(--color-border);
 }
 
-/* Länk täcker hela kortet för enkel navigering */ .project-cards a  {
+/* Länken täcker hela kortet */
+.project-cards a {
   display: block;
   position: relative;
   text-decoration: none;
 }
 
-/* Projektbild med fast bildförhållande */ .project-cards img  {
+/* Dölj den delen av bilden som zoomas utanför kortet */
+.project-img-wrap {
+  overflow: hidden;
+}
+
+/* Delat för kortbild och platshållare */
+.project-cards img,
+.project-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+/* Bild i kortet, zoomas vid hover */
+.project-cards img {
   display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  height: auto;
   object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
-/* Platshållare med ljusblå bakgrund för kommande projekt */ .project-placeholder  {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: var(--color-surface);
+/* Zooma bilden vid hover */
+.project-cards a:hover img {
+  transform: scale(1.1);
 }
 
-/* Projektnamn och taggar placerade längst ner i kortet */ .project-info  {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+/* Platshållare för kommande projekt. Använd med .bg-dark */
+.project-placeholder {
+  display: block;
+}
+
+/* Textinnehåll i kortet. Använd med .row-between */
+.project-info {
   padding: var(--space-md);
 }
 
-/* Endast litet avstånd undertill */ .project-info h2  {
+/* Projektrubrik utan övre marginal */
+.project-info h2 {
   margin: 0 0 var(--space-sm) 0;
 }
 
-/* Tagglista */ .tags  {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
+/* Luft under taggarna */
+.project-info .tags {
+  margin-bottom: var(--space-md);
 }
 
-/* Enskild tagg med frostat glas utseende */ .tags li  {
-  background: rgba(248, 246, 255, 0.15);
-  backdrop-filter: blur(6px);
-  color: var(--color-dark-tag);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-lg);
-  padding: 0.2rem 0.7rem;
-  font-weight: 600;
-  font-size: var(--text-xs);
-  font-family: var(--font-heading);
-}
 
-/* ============== Projekt Stratus ================ */ /* Fullskärmshero med bakgrundsbild */ .stratus-hero img  {
+/* ================= 11. Projektsida (case) ================= */
+
+/* Hero-bild i full bredd */
+.case-hero img {
   width: 100%;
   height: 70svh;
   object-fit: cover;
@@ -498,256 +1016,287 @@ h3  {
   display: block;
 }
 
-/* Introduktionstext */ .stratus-hero-text  {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-  margin-inline: auto;
-  width: var(--content-width);
-  padding-top: var(--space-2xl);
+/* Luft ovanför introtext och innehåll. Använd med .stack och .container */
+.case-hero-text,
+.case-content {
+  padding-top: var(--space-md);
 }
 
-/* Nolla inbyggd margin på brödtext i introduktion */ .stratus-hero-text p, .stratus-hero-text h1  {
+/* Avstånd mellan etikett, rubrik och text */
+.case-hero-text {
+  gap: var(--space-sm);
+}
+
+/* Nolla inbyggd marginal, avstånd styrs av gap */
+.case-hero-text p,
+.case-hero-text h1 {
   margin: 0;
 }
 
-/* Utrymme till page-label */ .stratus-hero-text h1  {
+/* Utrymme ovanför rubriken (under page-label) */
+.case-hero-text h1 {
   margin-top: var(--space-md);
 }
 
-/* Begränsa bredd för hela projektsidan */ .stratus-content  {
-  width: var(--content-width);
-  margin-inline: auto;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  padding-top: var(--space-2xl);
+/* Avstånd mellan sektionerna på projektsidan */
+.case-content {
+  gap: var(--space-lg);
 }
 
-/* Generell sektion med padding och rundade hörn */ .stratus-section  {
-  border-radius: var(--radius-lg);
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* Extra utrymme runt tertiär-knapp inuti sektion */ .stratus-section .tertiary-btn  {
-  margin: var(--space-md) 0;
-}
-
-/* Ljusblå bakgrund för färgade sektioner */ .stratus-section-color  {
-  background-color: var(--color-surface);
-  border: 1.5px solid var(--color-border);
+/* Sektion med padding. Använd med .surface och .fill-width (.bg-dark för mörk sektion) */
+.case-section {
   padding: var(--space-xl) var(--space-md);
 }
 
-/* Nolla marginaler ovanför och lite utrymme nertill för h2 i sektioner */ .stratus-section h2  {
-  margin-top: 0;
+/* Introsektion utan bakgrund. Använd med .fill-width */
+.case-section-intro {
+  padding: var(--space-sm) 0 var(--space-xs) 0;
+  font-size: var(--text-sm);
+  font-family: var(--font-body);
+  color: var(--color-dark-text);
+}
+
+/* Punktlistor på alla projektsidor */
+.case-content ul {
+  padding-left: 1.25rem;
+}
+
+/* Listpunkter: liten grå text med luft emellan */
+.case-content ul li {
+  font-size: var(--text-sm);
+  font-family: var(--font-body);
+  color: var(--color-grey);
+  line-height: 1.2rem;
   margin-bottom: var(--space-sm);
 }
 
-/* Extra utrymme ovanför innehållet */ .background  {
-  padding-top: var(--space-xl);
+/* Listor i mörk sektion: ljus text och begränsad radlängd */
+   .case-section.bg-dark ul li {
+    color: var(--color-white-text);
+    max-width: 45ch;
+  }
+
+/* Avstånd mellan introtext och ett rutnät som börjar med etikettgrupper */
+.text-section + .content-grid:has(.label-group) {
+  margin-top: var(--space-lg);
 }
 
-/* Utrymme ovanför och lite nedanför för h3 i sektioner */ .stratus-section h3  {
+/* Knappar i sektioner */
+.case-section-intro .tertiary-btn,
+.case-section .tertiary-btn {
+  margin: var(--space-md) 0;
+}
+
+/* Rubrik i sektioner: ingen övre marginal */
+.case-section h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+}
+
+/* Underrubrik i sektioner med luft ovanför */
+.case-section h3 {
   margin-top: var(--space-lg);
   margin-bottom: var(--space-xs);
 }
 
-/* Litet utrymme nedanför brödtext och listor */ .stratus-section p, .stratus-section ul  {
-  margin-bottom: var(--space-sm);
+/* Extra utrymme ovanför rubrik i intro (mobil) */
+.heading-offset {
+  padding-top: var(--space-xl);
 }
 
-/* Indraget för punktlista i linje med resterande text till vänster */ .stratus-section ul  {
-  padding-left: 1.25rem;
-}
-
-/* Typografi och avstånd för punktlista */ .stratus-section ul li  {
-  font-size: var(--text-small);
-  font-family: var(--font-body);
-  color: var(--color-dark-text);
-  margin-bottom: var(--space-xs);
-}
-
-/* Smalare bild */ .stratus-img  {
-  width: var(--content-width);
-  margin-inline: auto;
-  border-radius: var(--radius-md);
-  margin-block: var(--space-md);
-  display: block;
-  height: auto;
-}
-
-/* Bilder bredvid varandra */ .content-img  {
-  display: flex;
-  flex-direction: row;
-  gap: 0.75rem;
-  margin-block: var(--space-md);
-  width: 100%;
-}
-
-/* Varje bild tar upp halva bredden i raden */ .stratus-img-half  {
-  width: 50%;
-  min-width: 0;
-  border-radius: var(--radius-md);
-  object-fit: contain;
-  display: block;
-}
-
-/* Begränsa radlängd för bättre läsbarhet */ .text-section  {
+/* Begränsa radlängd för bättre läsbarhet */
+.text-section {
   max-width: 65ch;
 }
 
-/* Designprocessbilden i fullbredd */ .designprocess  {
-  width: 100%;
+/* Centrerad bild som spänner över hela rutnätet (designprocess, rivet papper).
+   Använd med .img-full */
+.img-span {
+  margin-inline: auto;
 }
 
-/* Metadata rad med projektinfo */ .stratus-meta  {
+/* Metadata-rad med projektinfo. Använd med .info-box och .bg-dark */
+.case-meta {
   display: flex;
-  justify-content: space-between;
-  background: var(--color-surface);
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-md);
+  justify-content: space-evenly;
   padding: 0.6rem;
 }
 
-/* Etikett och värde staplade vertikalt */ .stratus-data  {
-  display: flex;
-  flex-direction: column;
+/* Etiketten i metadata-raden med litet avstånd under */
+.case-meta .label {
+  margin: 0 0 var(--space-xs) 0;
 }
 
-/* Blå liten etikett i versaler */ .label  {
-  font-weight: 700;
-  font-size: var(--text-small);
+/* Värdetext under etikett */
+.value {
+  font-size: var(--text-2xs);
   font-family: var(--font-heading);
-  color: var(--color-label-blue);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin: 0;
-}
-
-/* Värdetext under etikett */ .value  {
-  font-weight: 500;
-  font-size: var(--text-small);
-  font-family: var(--font-heading);
-  color: var(--color-dark-text);
   margin: 0;
   line-height: 1.2;
 }
 
-/* Citat med padding */ .quote  {
-  padding: 0 var(--space-md);
+/* Färger för värdetext och siffror i mörka rutor (skriver över .bg-dark p) */
+.bg-dark .value {
+  color: var(--color-white);
+}
+
+/* Gula siffror i mörka rutor */
+.bg-dark .number {
+  color: var(--color-complementary);
+}
+
+/* Citatruta med frågeställning (aside) */
+.quote {
+  padding: var(--space-md) !important;
   align-self: start;
   max-width: 65ch;
+  border-radius: var(--space-sm);
 }
 
-/* Kursiv citattext i större fetare text och mörkblå färg */ .quote p  {
-  color: var(--color-dark-navy);
+/* Citattext: kursiv, grön och stor */
+.quote p {
+  color: var(--color-primary);
   font-style: italic;
   font-weight: 600;
-  font-size: var(--space-md);
+  font-size: var(--text-xl);
   font-family: var(--font-heading);
   line-height: 1.5;
-  width: 100%;
 }
 
-/* Karusell med dold overflow för att dölja inaktiva bilder */ .stratus-carousel  {
+/* Bild och nedladdningslänk över båda kolumnerna, längst ner */
+.content-grid > .content-full {
+  margin-top: var(--space-sm);
+}
+
+/* ---- Karusell ---- */
+
+/* Dold overflow döljer inaktiva bilder */
+.carousel {
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-md);
   margin-block: var(--space-md);
 }
 
-/* Flex rad för horisontell förflyttning */ .stratus-carousel-track  {
+/* Rad med karusellbilderna som flyttas i sidled */
+.carousel-track {
   display: flex;
   transition: transform 0.3s ease;
 }
 
-/* Varje bild tar upp fullbredd i karusellen */ .stratus-carousel-img  {
+/* Karusellbilder: full bredd, beskurna uppifrån */
+.carousel-img {
   width: 100%;
   object-fit: cover;
   object-position: top;
   display: block;
 }
 
-/* Frostad karusell-knapp som centeras vertikalt */ .stratus-carousel-btn  {
+/* Rund knapp, centrerad vertikalt. Använd med .icon-circle */
+.carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   width: 2.25rem;
   height: 2.25rem;
-  background: rgba(248, 246, 255, 0.2);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-pill);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: var(--color-white);
+  color: var(--color-dark-text);
+  border: 1px solid var(--color-border);
   cursor: pointer;
   z-index: 2;
 }
 
-/* Blå bakgrund vid hovring */ .stratus-carousel-btn:hover  {
+/* Pilikonen följer knappens textfärg */
+.carousel-btn svg {
+  fill: currentColor;
+}
+
+/* Grön knapp med vit pil vid hover */
+.carousel-btn:hover {
   background: var(--color-primary);
   border-color: var(--color-primary);
-  transform: translateY(-50%);
+  color: var(--color-white);
 }
 
-/* Föregående och nästa knapp placerade på varsin sida */ .stratus-carousel-btn--prev  {
-  left: var(--space-sm);
+/* Föregående-knappen utanför karusellens vänsterkant */
+.carousel-btn--prev { left: calc(-1 * (2rem + var(--space-xs))); }
+/* Nästa-knappen utanför karusellens högerkant */
+.carousel-btn--next { right: calc(-1 * (2rem + var(--space-xs))); }
+
+/* Wrapper så att pilarna kan ligga utanför karusellen */
+.carousel-wrap {
+  position: relative;
+  display: flow-root;
+  margin-inline: calc(2.25rem + var(--space-sm));
 }
 
-.stratus-carousel-btn--next  {
-  right: var(--space-sm);
-}
-
-/* Punktnavigering centrerad under karusell */ .stratus-carousel-dots  {
+/* Navigering med text under karusellen */
+.carousel-labels {
   display: flex;
-  justify-content: center;
-  gap: 0.4rem;
+  justify-content: space-between;
+  gap: var(--space-xs);
   margin-bottom: var(--space-md);
 }
 
-/* Liten rund punkt */ .dot  {
-  width: 0.4rem;
-  height: 0.4rem;
-  border-radius: var(--radius-pill);
-  background: var(--color-dot-inactive);
-  cursor: pointer;
+/* Navigeringsknapp under karusellen. Använd med .btn-plain */
+.dot {
+  flex: 1;
+  border-bottom: 2px solid transparent;
+  padding: var(--space-xs) 0;
+  font-family: var(--font-heading);
+  font-size: var(--text-2xs);
+  color: var(--color-grey);
+  text-align: center;
 }
 
-/* Aktiv punkt blir blå */ .dot.active  {
-  background: var(--color-primary);
+/* Aktiv navigeringsknapp: mörk text och grön understrykning */
+.dot.active {
+  color: var(--color-dark-text);
+  border-bottom-color: var(--color-primary);
 }
 
-/* Resultatsektion med text och bild */ .stratus-results  {
-  display: flex;
-  flex-direction: column;
+/* ---- Resultat ---- */
+
+/* Resultatsektion med text och bild. Använd med .stack */
+.case-results {
   align-items: flex-start;
   margin-bottom: var(--space-xl);
 }
 
-/* Nolla marginal ovanför resultat text */ .stratus-results p  {
+/* Texten utan övre marginal */
+.case-results p {
   margin-top: 0;
 }
 
-/* Centrera resultatsbild */ .stratus-results img  {
+/* Liten bild i resultatruta (låg specificitet så att .img-full kan ta över) */
+:where(.case-results) img {
+  width: 50%;
+  display: block;
+  border-radius: var(--radius-md);
+  object-fit: contain;
   align-self: center;
 }
 
-/* Kontakt-knapp centrerad och tillbaka till toppen-knapp till höger */ .ending  {
+/* Rad med kontaktknapp och "tillbaka till toppen"-knapp */
+.ending {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: var(--space-xl) 0;
   position: relative;
+  gap: var(--space-sm);
 }
 
-/* ============== Om mig ================ */ /* Profilbild centreras med utrymme ovanför */ .about-profile  {
+
+/* ================= 12. Om mig ================= */
+
+/* Profilvideo med utrymme ovanför */
+.about-profile {
   padding-top: var(--space-xl);
 }
 
-/* Profilbild med rundade hörn */ .about-profile img  {
+/* Kvadratisk video med rundade hörn */
+.about-profile video {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
@@ -756,314 +1305,671 @@ h3  {
   border-radius: var(--radius-lg);
 }
 
-/* Centrerat innehåll för om mig-sidan */ .about-content  {
-  display: flex;
-  flex-direction: column;
+/* Intro: video och text. Använd med .container */
+.about-intro {
+  padding-top: var(--space-xl);
+}
+
+/* Textinnehåll bredvid videon. Använd med .stack */
+.about-content {
   gap: var(--space-2xl);
   padding-bottom: var(--space-sm);
 }
 
-/* Generell sektion på om mig-sidan */ .about-section  {
-  display: flex;
-  flex-direction: column;
+/* Sektion med rubrik och text. Använd med .stack */
+.about-section {
   gap: var(--space-sm);
 }
 
-/* h1 med utrymme ovanför och under */ .about-section h1  {
-  padding: var(--space-md) 0;
-}
-
-/* Utrymme ovan och under h2 */ .about-section h2  {
-  padding: var(--space-md) 0;
-}
-
-/* Nolla inbyggd margin på alla rubriker och texter i about-section */ .about-section h1, .about-section h2, .about-section p  {
+/* Rubriker och text i sektionen: ingen egen marginal */
+.about-section h1,
+.about-section h2,
+.about-section p {
   margin: 0;
 }
 
-/* Utrymme ovanför citatet i om mig */ .about-section .quote  {
+/* Luft ovanför och under h1 */
+.about-section h1 {
+  padding: var(--space-md) 0;
+}
+
+/* Större utrymme ovanför h2 i färdigheter, erfarenheter och fakta */
+.facts h2,
+.about-section h2 {
+  padding: var(--space-2xl) 0 var(--space-sm) 0;
+}
+
+/* Luft ovanför och under färdighetstaggarna */
+.about-section-tags {
+  padding: var(--space-sm) 0;
+}
+
+/* Tre värdekort. Använd med .stack, .info-box och .bg-dark */
+.about-meta {
   margin-top: var(--space-xl);
-  padding: 0;
 }
 
-/* Utrymme ovanför och under */ .about-section-tags  {
-  padding: var(--space-xl) 0;
-}
-
-/* Begränsa bredd och centera */ .about-intro  {
-  width: var(--content-width);
-  margin-inline: auto;
-  padding-top: var(--space-xl);
-}
-
-/* Tre värde kort bredvid varandra */ .about-meta  {
+/* Ett värdekort: siffra och text på en rad, med linje under */
+.meta-card {
   display: flex;
-  flex-direction: column;
-  width: var(--content-width);
-  margin-inline: auto;
-  gap: var(--space-md);
-  padding-top: var(--space-xl);
-}
-
-/* Vardera kort är lika brett och centrerat */ .meta-card  {
-  background-color: var(--color-surface);
-  border-radius: var(--radius-sm);
-  border: 1.5px solid var(--color-border);
-  display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  text-align: center;
-  gap: var(--space-sm);
-  flex: 1;
-  padding: var(--space-md) 0.25rem;
-}
-
-/* Stor blå siffra i kortet */ .number  {
-  font-weight: 600;
-  font-size: var(--space-lg);
-  font-family: var(--font-heading);
-  color: var(--color-primary);
-  margin: 0;
-}
-
-/* Färdighetstaggar bredvid varandra med wrap */ .about-tags  {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-}
-
-/* Vardera tagg har mörkblå bakgrund */ .about-tags li  {
-  background-color: var(--color-dark-navy);
-  border-radius: var(--radius-pill);
-  padding: 0.4rem 0.8rem;
-  font-weight: 600;
-  font-size: 0.75rem;
-  font-family: var(--font-heading);
-  color: var(--color-white);
-}
-
-/* Erfarenhetskort med ljusblå bakgrund */ .about-skills  {
-  background-color: var(--color-surface);
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl) var(--space-md);
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  width: 100%;
-}
-
-/* Utrymme för kort */ .about-skills-section  {
-  display: flex;
-  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
   gap: var(--space-md);
-  box-sizing: border-box;
-  width: 100%;
+  flex: 1;
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--color-grey);
 }
 
-/* Titel och datum i samma rad */ .about-skills-top  {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: var(--space-xs);
-  gap: var(--space-sm);
+/* Liten text i värdekortet */
+.meta-card p {
+  font-size: var(--text-sm);
 }
 
-/* Nolla margin på h3 */ .about-skills h3  {
-  margin: 0 0 0.1rem 0;
-}
-
-/* Grå textfärg på företagsnamn utan utrymme */ .about-skills-company  {
+/* Stor siffra i värdekortet */
+.number {
+  font-weight: 600;
+  font-size: var(--text-3xl) !important;
   font-family: var(--font-heading);
-  color: var(--color-grey);
   margin: 0;
 }
 
-/* Utrymme ovanför brödtext */ .about-skills p  {
-  margin-top: var(--space-sm);
+/* Dekorativ bild under färdigheter, hela sidans bredd */
+.about-img {
+  grid-column: 1 / -1;
+  position: relative;
+  background-image: url('images/background.png');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  height: 15svh;
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  margin-block: var(--space-xs);
+  margin-top: var(--space-xl);
 }
 
-/* Datum tagg utan wrap med lika bredd */ .about-date  {
-  background-color: var(--color-primary-bg);
-  border: 1px solid var(--color-border-accent);
-  color: var(--color-dark-navy);
-  border-radius: var(--radius-lg);
-  padding: 0.2rem 0.7rem;
-  font-size: var(--text-xs);
-  font-family: var(--font-heading);
-  white-space: nowrap;
-  min-width: 4rem;
+/* ---- Faktakort ---- */
+
+/* Container: korten överlappar lite grann. Använd med .stack-center */
+.facts-cards {
+  padding: 2rem 1rem;
+}
+
+/* Gemensam stil för faktakorten. Använd med .stack-center och .bg-dark */
+.fact-card {
+  position: relative;
+  width: min(80%, 18rem);
+  aspect-ratio: 1;
+  padding: 1.5rem;
+  color: var(--color-white);
+  border-radius: 1.5rem;
   text-align: center;
+  justify-content: center;
 }
 
-/* Markera ord med primär färg för att stå ut mer från resterande text */ .about-section .digital_designer  {
-  color: var(--color-primary);
+/* Vänster kort lutar åt vänster */
+.fact-card--left {
+  transform: rotate(-4deg);
 }
 
-/* Avslutande sektion med samma bredd som resterande innehåll */ .about-ending  {
-  width: var(--content-width);
-  margin-inline: auto;
+/* Mittenkortet ligger överst, överlappar uppåt och har skugga */
+.fact-card--middle {
+  z-index: 2;
+  margin-top: -1rem;
+  transform: rotate(3deg);
+  box-shadow: 0 -1rem 0.5rem -0.5rem #0E160D40, 0 1rem 0.5rem -0.5rem #0E160D40;
 }
 
-/* ============== Responsivitet ================ */ /* --------------- Surfplatta & dator (768px+) --------------- */ @media (min-width: 768px)  {
-  /* --- Index --- */ /* För större slagkraftig hero text */ #text_hero h1  {
-    font-size: 2.25rem !important;
+/* Höger kort överlappar uppåt och lutar åt vänster */
+.fact-card--right {
+  margin-top: -1rem;
+  transform: rotate(-4deg);
+}
+
+/* Versaltext i kortet: grå och liten */
+.fact-card .nav-meny-text {
+  color: var(--color-mid-grey);
+}
+
+/* Vanlig text i kortet: vit */
+.fact-card p {
+  color: var(--color-white);
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+/* Större cirkel runt ikonen */
+.fact-card .card-icon {
+  flex: none;
+  width: 5rem;
+  height: 5rem;
+  padding: 0;
+  margin-bottom: var(--space-lg);
+}
+
+/* Ikonbilden fyller 70 % av cirkeln */
+.fact-card .card-icon img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+
+/* ================= 13. Responsivitet ================= */
+
+/* --------------- Surfplatta och uppåt (768px+) --------------- */
+@media (min-width: 768px) {
+
+  /* ---- Startsida ---- */
+
+  /* Hero: text till vänster, bild till höger */
+  #text_hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto auto auto 1fr;
+    column-gap: var(--space-2xl);
+    width: 100%;
+    box-sizing: border-box;
   }
 
-  /* Horisontell placering av kompetenskort */ .cards-row  {
-    display: flex;
-    gap: var(--space-md);
+  /* Rubriken i första kolumnen, responsiv storlek */
+  #text_hero h1 {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: clamp(2.25rem, 5vw, 3.5rem) !important;
+  }
+
+  /* Brödtexten i första kolumnen */
+  #text_hero p {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  /* Knapparna i första kolumnen, vänsterjusterade */
+  #text_hero .btns {
+    grid-column: 1;
+    grid-row: 4;
+    justify-content: flex-start;
+  }
+
+  /* Profilbilden i andra kolumnen, över alla rader */
+  #text_hero img {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    height: auto;
+  }
+
+  /* Kortgrupp: korten ligger bredvid varandra */
+  .card-group--row {
+    flex-direction: row;
     align-items: stretch;
   }
 
-  /* Korten är lika bred som innehållet */ .cards  {
+  /* Korten delar lika på bredden */
+  .card-group--row .card {
     flex: 1;
-    margin-bottom: 0;
   }
 
-  /* --- Om mig --- */ /* Tvåkolumnslayout med bild till vänster och introtext till höger */ .about-intro  {
+  /* Vanliga frågor: mer luft och större rubrik */
+  .faq-item {
+    padding: var(--space-lg) 0;
+  }
+
+  /* Större rubrik i frågesektionen */
+  .faq h2 {
+    font-size: 2rem;
+  }
+
+  /* Telefonen: fast bredd, och nästa sektion dras upp över dess tomma botten */
+  .faq-phone-mockup {
+    width: 480px;
+    margin-bottom: -6rem;
+  }
+
+  /* Kontaktsektionen ligger ovanpå telefonens nederkant */
+  .contact-vfu {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---- Om mig ---- */
+
+  /* Två kolumner: video till vänster, text till höger (bredare högerkolumn) */
+  .about-intro {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-xl);
-    width: var(--content-width);
-    margin-inline: auto;
-    padding-top: var(--space-xl);
-    align-items: center;
+    grid-template-columns: 1fr 1.25fr;
+    grid-template-rows: auto 1fr;
+    column-gap: var(--space-md);
+    row-gap: var(--space-xl);
+    align-items: start;
   }
 
-  /* Bild placeras först i grid och nollställer mobilstil */ .about-intro .about-profile  {
-    order: -1;
+  /* Videorutan sträcker sig över båda raderna och mäter sin egen yta */
+  .about-intro .about-profile {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    align-self: stretch;
+    container-type: size;
     width: 100%;
     margin-inline: 0;
     padding-top: 0;
   }
 
-  /* Bilden fyller hela profilkolumnen */ .about-intro .about-profile img  {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    border-radius: var(--radius-lg);
+  /* Kvadratisk video: sidan är den minsta av rutans bredd och höjd */
+  .about-intro .about-profile video {
+    width: min(100cqw, 100cqh);
+    height: min(100cqw, 100cqh);
   }
 
-  /* Textinnehåll nollställer mobilstil */ .about-intro .about-content  {
+  /* Textblocket i högerkolumnen, överst */
+  .about-intro .about-content {
+    grid-column: 2;
+    grid-row: 1;
     width: 100%;
     margin-inline: 0;
     padding-bottom: 0;
   }
 
-  /* Statistikkort placeras horisontellt */ .about-meta  {
-    flex-direction: row;
-  }
-
-  /* --- Projektöversikt --- */ /* 2 kort per rad */ .project-list  {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  /* Gör så att innehållet ligger närmare varandra */ .stratus-intro-grid h2, .stratus-intro-grid p, .stratus-intro-grid .tertiary-btn  {
+  /* Värdekorten i högerkolumnen, längst ner */
+  .about-intro .about-meta {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: end;
     margin-top: 0;
   }
 
-  /* Tvåkolumnslayout för text och bild */ .content-grid  {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4vw;
-    align-items: center;
+  /* Sista kortet utan nedre linje */
+  .about-intro .meta-card:last-child {
+    border-bottom: none;
   }
 
-  /* Begränsad radlängd i textkolumn */ .content  {
-    max-width: 40ch;
+  /* Högerkolumnens maxbredd */
+  .about-intro .about-content,
+  .about-intro .about-meta {
+    max-width: 32rem;
   }
 
-  /* Centrera bilder i bildkolumn */ .content-img  {
-    display: flex;
-    justify-content: center;
-    gap: var(--space-md);
-  }
-
-  /* Bilder delar utrymme i kolumnen */ .content-img img  {
-    width: 45%;
-    height: auto;
-  }
-
-  /* Fördela projektinformationen jämnt över hela raden */ .stratus-meta  {
-    display: flex;
-    justify-content: space-evenly;
-  }
-
-  /* Tvåkolumnslayout för projektintroduktion */ .stratus-intro-grid  {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6vw;
-    align-items: start;
-  }
-
-  /* Ta bort extra avstånd */ .background  {
-    padding-top: 0;
-  }
-
-  /* Sträcker sig över båda kolumner */ .designprocess, .stratus-meta  {
+  /* Färdigheter och fakta ligger under, över hela bredden */
+  .about-intro .about-section-tags,
+  .facts {
     grid-column: 1 / -1;
-    width: 100%;
+  }
+
+  /* Färdigheter och erfarenheter: smalare bredd */
+  main > section.about-section-tags,
+  main > section.about-section {
+    width: var(--content-width-narrow);
+    margin-inline: auto;
     box-sizing: border-box;
   }
 
-  /* Förminska bredden på designprocess bilden */ .designprocess  {
-    width: 50vw;
+  /* Fakta behåller den vanliga innehållsbredden så att korten får plats */
+  main > section.facts {
+    width: var(--content-width);
+    box-sizing: border-box;
   }
 
-  /* Centrera och begränsa bredd */ .content-media  {
-    width: 50%;
-    justify-self: center;
+  /* Luft ovanför färdigheter och fakta */
+  .about-section-tags,
+  .facts {
+    padding-top: var(--space-lg);
   }
 
-  /* Visa resultatsektion horisontellt */ .stratus-results  {
+  /* Rubriker centrerade */
+  .about-section h2,
+  .facts h2 {
+    text-align: center;
+  }
+
+  /* Dekorativ bild skalar med bredden */
+  .about-img {
+    height: auto;
+    aspect-ratio: 1512 / 170;
+    background-size: 100% auto;
+    background-position: center bottom;
+  }
+
+  /* ---- Projektöversikt ---- */
+
+  /* Två kort per rad */
+  .project-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* ---- Projektsida: introduktion ---- */
+
+  /* Mer luft ovanför introtext och innehåll */
+  .case-content,
+  .case-hero-text {
+    padding-top: var(--space-lg);
+  }
+
+  /* Tvåkolumnslayout för projektintroduktion */
+  .case-intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6vw;
+    row-gap: var(--space-md);
+    align-items: start;
+  }
+
+  /* Ingen extra förskjutning när kolumnerna ligger bredvid varandra */
+  .heading-offset {
+    padding-top: 0;
+  }
+
+  /* Metadata sträcker sig över båda kolumnerna */
+  .case-meta {
+    grid-column: 1 / -1;
+  }
+
+  /* Centrerade bilder över båda kolumnerna: undantag från sidans bredd, smalare */
+  .img-span {
+    grid-column: 1 / -1;
+    width: 65%;
+    margin-top: var(--space-2xl);
+  }
+
+  /* ---- Projektsida: sektioner ---- */
+
+  /* Mer luft i sektionerna (bredden följer .case-content) */
+  .case-section {
+    padding: var(--space-2xl);
+  }
+
+  /* Citatet centreras */
+  .quote {
+    align-self: center;
+    text-align: center;
+  }
+
+  /* Luft under textstycken i sektioner */
+  .text-section {
+    margin-bottom: var(--space-sm);
+  }
+
+  /* Tvåkolumnslayout för text och bild, båda börjar uppifrån */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3vw;
+    row-gap: var(--space-md);
+    align-items: start;
+  }
+
+  /* Text till vänster */
+  .content-grid > .content {
+    order: 1;
+    max-width: 50ch;
+    justify-self: start;
+  }
+
+  /* Rubriken linjerar med bildens överkant */
+  .content-grid > .content > h3:first-child {
+    margin-top: var(--space-lg);
+  }
+
+  /* Innehåll över båda kolumnerna, längst ner */
+  .content-grid > .content-full {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+
+  /* Bild till höger */
+  .content-grid > .img-row,
+  .content-grid > .content-media {
+    order: 2;
+    grid-column: 2;
+    justify-self: end;
+  }
+
+  /* Bildrad i rutnät: begränsad bredd, vänsterställd */
+  .content-grid .img-row {
+    max-width: 24rem;
+    justify-self: start;
+  }
+
+  /* Staplade bildrader ligger på rad */
+  .img-row--stack {
+    flex-direction: row;
+  }
+
+  /* Staplade bilder delar lika på bredden */
+  .img-row--stack img {
+    flex: 1 1 0;
+    width: auto;
+  }
+
+  /* Staplade bilder i rutnät har ingen begränsad bredd */
+  .content-grid .img-row--stack {
+    max-width: none;
+  }
+
+  /* Bildkolumnen fyller sin kolumn */
+  .content-media {
+    width: 100%;
+  }
+
+  /* Karusell: smal och till höger */
+  .content-carousel {
+    max-width: 22rem;
+  }
+
+  /* Ingen övre marginal på karusellen */
+  .content-carousel .carousel {
+    margin-top: 0;
+  }
+
+  /* Begränsa höjden på bilder i bildkolumner */
+  .content-media .img-full {
+    width: auto;
+    max-width: 100%;
+    max-height: 24rem;
+    object-fit: contain;
+  }
+
+  /* Nollställ övre marginal i toppgriden */
+  .content-grid.content-grid-top .label-group,
+  .content-grid.content-grid-top .label-group .label {
+    margin-top: 0;
+  }
+
+  /* Avstånd mellan etikettgrupper under varandra */
+  .content-grid.content-grid-top .label-group + .label-group {
+    margin-top: var(--space-lg);
+  }
+
+  /* Variant: bilden till vänster och texten till höger */
+  .case-section-media-left .content-grid > .img-row {
+    grid-column: 1;
+    order: 1;
+    justify-self: start;
+  }
+
+  /* Texten i högerkolumnen */
+  .case-section-media-left .content-grid > .content {
+    grid-column: 2;
+    order: 2;
+    justify-self: start;
+  }
+
+  /* Variant: hög bild till höger, i linje med översta rubriken */
+  .case-section-tall {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto 1fr;
+    column-gap: 4vw;
+    align-items: start;
+  }
+
+  /* Rubrik, text och textkolumn i vänster kolumn */
+  .case-section-tall > h2,
+  .case-section-tall > .text-section,
+  .case-section-tall .content-grid > .content {
+    grid-column: 1;
+  }
+
+  /* Bild och text blir direkta barn i sektionens rutnät */
+  .case-section-tall > .content-grid {
+    display: contents;
+  }
+
+  /* Bilden sträcker sig över alla tre raderna */
+  .case-section-tall .content-grid > .content-carousel,
+  .case-section-tall .content-grid > .img-row,
+  .case-section-tall .content-grid > .content-media {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    justify-self: end;
+    margin-top: 0;
+  }
+
+  /* Wireframe-bilden: större, i högerkolumnen i linje med rubriken */
+  .case-section-tall .content-grid > .content-media {
+    width: 100%;
+  }
+
+  /* Wireframe-bilden i full bredd utan höjdgräns */
+  .case-section-tall .content-media .img-full {
+    max-height: none;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  /* Mindre bildkolumn: 80 % av bredden */
+  .case-section-tall .content-grid > .content-media-small {
+    width: 80%;
+  }
+
+  /* Bildrad i hög sektion: full bredd */
+  .case-section-tall .img-row {
+    max-width: none;
+    width: 100%;
+  }
+
+  /* Bilderna i stående format */
+  .case-section-tall .img-row img {
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+  }
+
+  /* Inspiration: bild och text staplas tills 1200px (bilderna är ett undantag från bredden) */
+  .case-inspiration .content-grid {
     display: flex;
+    flex-direction: column;
+  }
+
+  /* Bildraden i full bredd när den staplas */
+  .case-inspiration .content-grid > .img-row {
+    max-width: none;
+  }
+
+  /* ---- Projektsida: resultat ---- */
+
+  /* Resultatsektion horisontellt */
+  .case-results {
     flex-direction: row;
     align-items: center;
     gap: var(--space-lg);
     text-align: left;
   }
 
-  /* Fast storlek på bild */ .stratus-results img  {
+  /* Liten bild med fast bredd */
+  .case-results img {
     width: 100px;
     flex-shrink: 0;
     margin-bottom: 0;
   }
 
-  /* Ta bort standardmarginal på text */ .stratus-results p  {
+  /* Texten utan egen marginal */
+  .case-results p {
     margin: 0;
   }
 
-  /* Tvåkolumnslayout jämnt fördelade */ .deliver-grid  {
+  /* Tvåkolumnslayout, jämnt fördelade */
+  .deliver-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-xl);
   }
 
+  /* ---- Footer ---- */
+
+  /* Bilden fyller hela bredden, länkar till vänster och ikoner till höger */
+  #image-footer {
+    background-size: 100% auto;
+    height: calc(100vw * 384 / 1512 + 2rem);
+    padding: 0 var(--space-2xl) var(--space-2xl);
+    box-sizing: border-box;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  /* Navigeringslänkarna ligger horisontellt */
+  .footer-nav {
+    flex-direction: row;
+    gap: var(--space-xl);
+  }
 }
 
-@media (min-width: 1200px)  {
-  /* Dölj hamburger-knappen och overlay-navigationen */ .hamburger-btn  {
+
+/* --------------- Faktakort på rad (968px+) --------------- */
+@media (min-width: 968px) {
+
+  /* Korten läggs på rad */
+  .facts-cards {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  /* Korten delar på raden */
+  .fact-card {
+    width: min(32%, 18rem);
+  }
+
+  /* Överlapp sker i sidled i stället för uppåt */
+  .fact-card--middle,
+  .fact-card--right {
+    margin-top: 0;
+  }
+
+  /* Mittenkortet överlappar i sidled och har sidoskugga */
+  .fact-card--middle {
+    margin-inline: -1.5rem;
+    box-shadow:
+      -1rem 0 0.5rem -0.5rem #0E160D40,
+      1rem 0 0.5rem -0.5rem #0E160D40;
+  }
+}
+
+
+/* --------------- Stor dator (1200px+) --------------- */
+@media (min-width: 1200px) {
+
+  /* Dölj hamburger-knappen och fullskärmsmenyn */
+  .hamburger-btn {
     display: none;
   }
 
-  /* Dölj mobilmeny på större skärm */ #nav-overlay  {
+  /* Fullskärmsmenyn visas aldrig på stora skärmar */
+  #nav-overlay {
     display: none !important;
   }
 
-  /* Header: logo till vänster, nav i mitten, knapp till höger */ header  {
+  /* Header: logotyp till vänster, navigering i mitten, knapp till höger */
+  header {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     padding: 1.25rem var(--space-2xl);
   }
 
-  /* Visa desktop-nav och desktop-kontaktknapp */ .desktop-nav  {
+  /* Visa desktopnavigeringen */
+  .desktop-nav {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1073,81 +1979,90 @@ h3  {
     padding: 0;
   }
 
-  /* Stilsättning av länkar i huvudnavigering */ .desktop-nav a  {
+  /* Länkar i desktopmenyn */
+  .desktop-nav a {
     font-weight: 500;
-    font-size: var( --text-body);
+    font-size: var(--text-md);
     font-family: var(--font-heading);
     text-decoration: none;
     color: var(--color-dark-text);
     transition: color 0.3s ease;
   }
 
-  /* Blå färg vid hovring */ .desktop-nav a:hover  {
+  /* Länkarna byter färg vid hover */
+  .desktop-nav a:hover {
     color: var(--color-primary);
   }
 
-  /* Fetmarkering av aktiv sida */ .desktop-nav a.active  {
-    font-weight: 600;
+  /* Understrykning markerar aktiv sida */
+  .desktop-nav a.active {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-color: var(--color-mid-grey);
   }
 
-  /* Placering av kontaktknapp till höger */ .desktop-contact  {
+  /* Kontaktknapp till höger i headern */
+  .desktop-contact {
     display: flex;
     justify-content: flex-end;
   }
 
-  /* Dold dropdown-meny, samt stilsättning för desktop */ .desktop-dropdown-menu  {
+  /* Dropdown-meny: dold tills man hovrar, ligger under länken */
+  .desktop-dropdown-menu {
     display: none;
-    flex-direction: column;
-    gap: 0.75rem;
+    gap: var(--space-xl);
     position: absolute;
     left: 0;
     top: 100%;
-    list-style: none;
-    margin: 0;
-    padding: var(--space-lg) var(--space-sm);
+    padding: var(--space-lg) var(--space-md) var(--space-lg) 2.5rem;
     background-color: var(--color-white);
     border-radius: 0 0 var(--radius-sm) var(--radius-sm);
     box-shadow: var(--shadow-header);
     min-width: 180px;
   }
 
-  /* Visa dropdownmenyn vid hovring */ .desktop-dropdown:hover .desktop-dropdown-menu  {
+  /* Linjen börjar och slutar vid första och sista länken */
+  .desktop-dropdown-menu::before {
+    top: var(--space-lg);
+    bottom: var(--space-lg);
+  }
+
+  /* Länkar i dropdown-menyn bryts inte */
+  .desktop-dropdown-menu a {
+    white-space: nowrap;
+  }
+
+  /* Visa dropdown vid hover eller JS .active */
+  .desktop-dropdown:hover .desktop-dropdown-menu,
+  .desktop-dropdown-menu.active {
     display: flex;
   }
 
-  /* Positionering av dropdown */ .desktop-dropdown  {
+  /* Referenspunkt för dropdown-menyns position */
+  .desktop-dropdown {
     position: relative;
   }
 
-  /* Visa dropdown när JS är .active */ .desktop-dropdown-menu.active  {
-    display: flex;
-  }
-
-  /* Länk och pil */ .desktop-dropdown-header  {
+  /* Länk och pil bredvid varandra */
+  .desktop-dropdown-header {
     display: flex;
     align-items: center;
     gap: var(--space-xs);
   }
 
-  /* Rotera pilen vid hover */ .desktop-dropdown:hover .dropdown-toggle  {
+  /* Pilen vänds vid hover */
+  .desktop-dropdown:hover .dropdown-toggle {
     transform: rotate(180deg);
   }
 
-  /* Horisontell footer */ #image_footer  {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 var(--space-2xl);
-    box-sizing: border-box;
-    background-position: center 10%;
-    height: 20svh;
+  /* Inspiration: text och bild i två kolumner från 1200px */
+  .case-inspiration .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
-  /* Navogeringslänkar horisontellt */ .footer_nav  {
-    display: flex;
-    flex-direction: row;
-    gap: 1.5rem;
+  /* Bildraden får begränsad bredd i kolumnen */
+  .case-inspiration .content-grid > .img-row {
+    max-width: 24rem;
   }
-
 }
