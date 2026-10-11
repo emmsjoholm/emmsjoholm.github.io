@@ -6,6 +6,7 @@
    4. Tertiärknapp
    5. Länkknapp
    6. Runda knappar (stäng & tillbaka till toppen)
+   7. Focus på projektkort
    ========================================================== */
 
 
@@ -44,6 +45,17 @@
    .link-btn:active {
      font-weight: 600;
    }
+
+   /* Synlig fokusring för tangentbordsnavigering på alla klickbara element. :where() nollar specificiteten så att egna regler kan skriva över */
+   :where(a, button, summary, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  /* Ljusare fokusring på mörk bakgrund så att den syns */
+  .bg-dark :focus-visible {
+  outline-color: var(--color-complementary);
+  }
    
    /* ================ 2. Primärknapp ================== */
    
@@ -171,3 +183,16 @@
    .back-top-btn:active {
      background-color: var(--color-dark-tag);
    }
+
+  /* ================ 7. Focus på projektkort ================== */
+ 
+  /* Fokusring runt hela kortet (länkens egen ring klipps av overflow: hidden) */
+  .project-cards:has(a:focus-visible) {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  }
+
+  /* Dölj länkens egen ring, kortets ring ersätter den */
+  .project-cards a:focus-visible {
+  outline: none;
+  }

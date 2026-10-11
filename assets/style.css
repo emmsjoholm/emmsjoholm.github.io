@@ -646,7 +646,7 @@ header {
 
 /* Footer: bild längst ner, länkar och ikoner ovanför. Använd med .stack-center */
 #image-footer {
-  background-image: url('images/footer_background.png');
+  background-image: url('images/footer_background.webp');
   background-size: auto 16rem;
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -869,7 +869,7 @@ details[open] .faq-icon {
   aspect-ratio: 898 / 1378;
   margin-inline: auto;
   margin-top: 3rem;
-  background-image: url('images/phone_background.png');
+  background-image: url('images/phone_background.webp');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -1379,7 +1379,7 @@ details[open] .faq-icon {
 .about-img {
   grid-column: 1 / -1;
   position: relative;
-  background-image: url('images/background.png');
+  background-image: url('images/background.webp');
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -2065,4 +2065,9 @@ details[open] .faq-icon {
   .case-inspiration .content-grid > .img-row {
     max-width: 24rem;
   }
+
+  /* Logotyplänken ska bara vara lika stor som logotypen, inte hela kolumnen */
+header > a:has(.logo) {
+  justify-self: start;
+}
 }
