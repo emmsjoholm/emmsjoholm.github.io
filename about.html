@@ -20,9 +20,9 @@
     </div>
     <main>
       <!-- Introduktionstext -->
-      <div class="about-intro">
-        <div class="about-content">
-          <section class="about-section">
+      <div class="about-intro container">
+        <div class="about-content stack">
+          <section class="about-section stack">
             <p class="page-label">
               Om mig
             </p>
@@ -30,188 +30,212 @@
               Designer norr
               <br>
               om
-              <span class="digital_designer">
+              <span class="highlight">
                 polcirkeln
               </span>
             </h1>
             <p>
-              Med en bakgrund i tekniska och processorienterade roller utbildar jag mig inom digital design norr om polcirkeln.
+              Med min bakgrund i tekniska, processorienterade roller studerar jag nu digital design där jag förenar strukturerad problemlösning med ett användarcentrerat och iterativt designarbete.
             </p>
-            <p>
-              Min erfarenhet har gett mig ett strukturerat och problemlösningsdrivet arbetssätt som jag idag kombinerar med ett användarcentrerat och iterativt förhållningssätt till design.
-            </p>
-            <aside class="quote">
-              <p>
-                Teknisk precision och kreativitet formar de digitala upplevelser jag vill skapa
-              </p>
-            </aside>
           </section>
         </div>
-        <!-- Profilbild -->
+        <!-- Hälsningsvideo -->
         <div class="about-profile">
-          <img src="assets/images/profil.webp" alt="Emma Sjöholm med sin West Highland white terrier och sin Border Collie på ett snötäckt fjäll i solnedgången på vintern">
+          <video autoplay muted loop playsinline>
+            <source src="assets/images/greetings.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!-- Statistik kort med full bredd -->
+        <div class="about-meta stack info-box bg-dark">
+          <div class="meta-card">
+            <p class="number">
+              4+
+            </p>
+            <p class="value">
+              År av projektplanering
+            </p>
+          </div>
+          <div class="meta-card">
+            <p class="number">
+              8+
+            </p>
+            <p class="value">
+              Design- & teknikfärdigheter
+            </p>
+          </div>
+          <div class="meta-card">
+            <p class="number">
+              2+
+            </p>
+            <p class="value">
+              År av designstudier
+            </p>
+          </div>
         </div>
       </div>
-      <!-- Statistik kort med full bredd -->
-      <div class="about-meta">
-        <div class="meta-card">
-          <p class="number">
-            4+
-          </p>
-          <p class="value">
-            År av projektplanering
-          </p>
+      <div class="about-img" aria-hidden="true"></div>
+        <!-- Färdigheter som taggar -->
+        <section class="about-section-tags">
+          <h2>
+            Färdigheter
+          </h2>
+          <ul class="tags">
+            <li>
+              Affinity Designer
+            </li>
+            <li>
+              Affinity Photo
+            </li>
+            <li>
+              CSS
+            </li>
+            <li>
+              DaVinci Resolve
+            </li>
+            <li>
+              Excel
+            </li>
+            <li>
+              Figma
+            </li>
+            <li>
+              HTML
+            </li>
+            <li>
+              PHP
+            </li>
+            <li>
+              SQL
+            </li>
+          </ul>
+        </section>
+        <!-- Erfarenheter av utbildning och arbete i kronolgisk ordning -->
+        <section class="about-section stack">
+          <h2>
+            Erfarenheter
+          </h2>
+          <div class="card-group stack">
+            <div class="card stack surface fill-width">
+              <div class="card-top row-between">
+                <h3>
+                  Digital Design
+                </h3>
+                <span class="date-tag">
+                  2024 – Nu
+                </span>
+              </div>
+              <p class="card-subtitle">
+                Högskolan Kristianstad
+              </p>
+              <p>
+                Kandidatprogram inom design, teknik, kommunikation och estetik inom digitala medier
+              </p>
+            </div>
+            <div class="card stack surface fill-width">
+              <div class="card-top row-between">
+                <h3>
+                  Beredare
+                </h3>
+                <span class="date-tag">
+                  2023 – 2024
+                </span>
+              </div>
+              <p class="card-subtitle">
+                Vattenfall Services – Professionals Nord
+              </p>
+              <p>
+                Konsult i planering, rapportering, kalkylering och teknisk dokumentation inom 0,4-40kv distributionsnät
+              </p>
+            </div>
+            <div class="card stack surface fill-width">
+              <div class="card-top row-between">
+                <h3>
+                  Planerare/Beredare
+                </h3>
+                <span class="date-tag">
+                  2020 – 2023
+                </span>
+              </div>
+              <p class="card-subtitle">
+                LKAB
+              </p>
+              <p>
+                Planering, rapportering, processutveckling, personal- och avvikelsehantering inom gruvverksamhet
+              </p>
+            </div>
+            <div class="card stack surface fill-width">
+              <div class="card-top row-between">
+                <h3>
+                  Provtagare
+                </h3>
+                <span class="date-tag">
+                  2018 – 2020
+                </span>
+              </div>
+              <p class="card-subtitle">
+                LKAB
+              </p>
+              <p>
+                Kvalitetskontroll, rapportering och underhåll inom gruvverksamhetens laboratorium
+              </p>
+            </div>
+            <div class="card stack surface fill-width">
+              <div class="card-top row-between">
+                <h3>
+                  Naturvetenskapliga programmet
+                </h3>
+                <span class="date-tag">
+                  2015 – 2018
+                </span>
+              </div>
+              <p class="card-subtitle">
+                Välkommaskolan
+              </p>
+              <p>
+                Gymnasieutbildning inom Naturvetenskap, inriktning naturspecialisering
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="facts">
+          <h2>3 saker om mig</h2>
+          <div class="facts-cards stack-center">
+            <div class="fact-card stack-center bg-dark fact-card--left">
+              <div class="card-icon icon-circle">
+                <img src="assets/images/dog_icon.svg" alt="Outline ritad hund" width="48" height="48">
+              </div>
+              <p class="nav-meny-text">FULL FART</p>
+              <p>Jag trivs bäst på agilitybanan</p>
+            </div>
+            <div class="fact-card stack-center bg-dark fact-card--middle">
+              <div class="card-icon icon-circle">
+                <img src="assets/images/mountain_icon.svg" alt="Outline ritat berg" width="48" height="48">
+              </div>
+              <p class="nav-meny-text">LADDAR BATTERIERNA</p>
+              <p>Ute i skogen eller uppe på en bergstopp</p>
+            </div>
+            <div class="fact-card stack-center bg-dark fact-card--right">
+              <div class="card-icon icon-circle">
+                <img src="assets/images/lightning_icon.svg" alt="Outline ritad blixt" width="48" height="48">
+              </div>
+              <p class="nav-meny-text">MITT BRÄNSLE</p>
+              <p>En energidricka om dagen är bra för magen</p>
+            </div>
+          </div>
+        </section>
+        <!-- Kontaktknapp och tillbaka till toppen-knapp -->
+        <div class="ending">
+          <a href="mailto:emmsjoholm@gmail.com" class="primary-btn" aria-label="Skicka e-post till Emma Sjöholm">
+            Kontakta mig
+          </a>
+          <a href="#top" class="back-top-btn" aria-label="Tillbaka till toppen">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  fill="#1b1625" viewBox="0 0 24 24" >
+              <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+              <path d="M13 18V9.91l3.29 3.3 1.42-1.42L12 6.09l-5.71 5.7 1.42 1.42L11 9.91V18z">
+              </path>
+            </svg>
+          </a>
         </div>
-        <div class="meta-card">
-          <p class="number">
-            8+
-          </p>
-          <p class="value">
-            Design- & teknikfärdigheter
-          </p>
-        </div>
-        <div class="meta-card">
-          <p class="number">
-            2+
-          </p>
-          <p class="value">
-            År av designstudier
-          </p>
-        </div>
-      </div>
-      <!-- Färdigheter som taggar -->
-      <section class="about-section about-section-tags">
-        <h2>
-          Färdigheter
-        </h2>
-        <ul class="about-tags">
-          <li>
-            Affinity Designer
-          </li>
-          <li>
-            Affinity Photo
-          </li>
-          <li>
-            CSS
-          </li>
-          <li>
-            Excel
-          </li>
-          <li>
-            Figma
-          </li>
-          <li>
-            HTML
-          </li>
-          <li>
-            PHP
-          </li>
-          <li>
-            SQL
-          </li>
-        </ul>
-      </section>
-      <!-- Erfarenheter av utbildning och arbete i kronolgisk ordning -->
-      <section class="about-section">
-        <h2>
-          Erfarenheter
-        </h2>
-        <div class="about-skills-section">
-          <div class="about-skills">
-            <div class="about-skills-top">
-              <h3>
-                Digital Design
-              </h3>
-              <span class="about-date">
-                2024 – Nu
-              </span>
-            </div>
-            <p class="about-skills-company">
-              Högskolan Kristianstad
-            </p>
-            <p>
-              Kandidatprogram inom design, teknik, kommunikation och estetik inom digitala medier
-            </p>
-          </div>
-          <div class="about-skills">
-            <div class="about-skills-top">
-              <h3>
-                Projektplanerare
-              </h3>
-              <span class="about-date">
-                2023 – 2024
-              </span>
-            </div>
-            <p class="about-skills-company">
-              Vattenfall Services – Professionals Nord
-            </p>
-            <p>
-              Konsult i planering, rapportering, kalkylering och teknisk dokumentation inom 0,4-40kv distributionsnät
-            </p>
-          </div>
-          <div class="about-skills">
-            <div class="about-skills-top">
-              <h3>
-                Projektplanerare
-              </h3>
-              <span class="about-date">
-                2020 – 2023
-              </span>
-            </div>
-            <p class="about-skills-company">
-              LKAB
-            </p>
-            <p>
-              Planering, rapportering, processutveckling, personal- och avvikelsehantering inom gruvverksamhet
-            </p>
-          </div>
-          <div class="about-skills">
-            <div class="about-skills-top">
-              <h3>
-                Provtagare
-              </h3>
-              <span class="about-date">
-                2018 – 2020
-              </span>
-            </div>
-            <p class="about-skills-company">
-              LKAB
-            </p>
-            <p>
-              Kvalitetskontroll, rapportering och underhåll inom gruvverksamhetens laboratorium
-            </p>
-          </div>
-          <div class="about-skills">
-            <div class="about-skills-top">
-              <h3>
-                Naturvetenskapliga programmet
-              </h3>
-              <span class="about-date">
-                2015 – 2018
-              </span>
-            </div>
-            <p class="about-skills-company">
-              Välkommaskolan
-            </p>
-            <p>
-              Gymnasieutbildning inom Naturvetenskap, inriktning naturspecialisering
-            </p>
-          </div>
-        </div>
-      </section>
-      <!-- Kontaktknapp och tillbaka till toppen-knapp -->
-      <div class="ending about-ending">
-        <a href="mailto:emmsjoholm@gmail.com" class="primary-btn" aria-label="Skicka e-post till Emma Sjöholm">
-          Kontakta mig
-        </a>
-        <a href="#top" class="back-top-btn" aria-label="Tillbaka till toppen">
-          <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24"  fill="#2421CF" viewBox="0 0 24 24" >
-            <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
-            <path d="M13 18V9.91l3.29 3.3 1.42-1.42L12 6.09l-5.71 5.7 1.42 1.42L11 9.91V18z">
-            </path>
-          </svg>
-        </a>
-      </div>
     </main>
     <!-- Footer via JS fetch -->
     <div id="footer">
