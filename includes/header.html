@@ -14,160 +14,171 @@
     <link href="assets/style.css" rel="stylesheet">
     <link href="assets/btn.css" rel="stylesheet">
   </head>
-	<header>
-		<!-- Logotyp med länk till startsida -->
-		<a href="index.html">
-		<img class="logo" src="/assets/images/logo.webp" alt="Logotyp Emma Sjöholm">
-		</a>
-		<!-- Desktop navigering -->
-		<ul class="desktop-nav">
-		<li>
-			<a href="index.html">
-			Hem
-			</a>
-		</li>
-		<li>
-			<a href="about.html">
-			Om mig
-			</a>
-		</li>
-		<!-- Dropdown meny för projekt i desktop -->
-		<li class="desktop-dropdown">
-			<div class="desktop-dropdown-header">
-			<a href="projectoverview.html">
-				Projekt
-			</a>
-			<!-- Öppna och stänga dropdown pil -->
-			<button class="dropdown-toggle" aria-expanded="false" aria-label="Visa undermeny för projekt">
-				<svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" >
-				<!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
-				<path d="m12 15.41 5.71-5.7-1.42-1.42-4.29 4.3-4.29-4.3-1.42 1.42z">
-				</path>
-				</svg>
-			</button>
-			</div>
-			<!-- Undermeny med länk till projektet Stratus -->
-			<ul class="desktop-dropdown-menu">
-			<li>
-				<a href="projectstratus.html">
-				Stratus
-				</a>
-			</li>
-			</ul>
-		</li>
-		</ul>
-		<!-- Kontaktknapp till höger -->
-		<div class="desktop-contact">
-		<a href="mailto:emmsjoholm@gmail.com" class="primary-btn">
-			Kontakta mig
-		</a>
-		</div>
-		<!-- Mobil navigering -->
-		<!-- Hamburgareknapp som öppnar menyn -->
-		<button class="hamburger-btn" aria-label="Öppna meny" aria-expanded="false" aria-controls="nav-overlay">
-		<svg  xmlns="http://www.w3.org/2000/svg" width="32" height="32"  fill="currentColor" viewBox="0 0 24 24" >
-			<!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
-			<path d="M3 5h18v2H3zm0 6h18v2H3zm0 6h18v2H3z">
-			</path>
-		</svg>
-		</button>
-		<!-- Meny dold från början -->
-		<nav id="nav-overlay" aria-hidden="true">
-		<!-- Meny text och kryss för att stänga -->
-		<div class="nav-top">
-			<p class="nav-meny-text">
-			MENY
-			</p>
-			<button class="close-btn" aria-label="Stäng meny">
-			✕
-			</button>
-		</div>
-		<ul class="nav-links">
-			<!-- Hem -->
-			<li>
-			<div>
-				<a href="index.html">
-				<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24"  fill="#2421CF" viewBox="0 0 24 24" >
-					<!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
-					<path d="M12.71 2.29a.996.996 0 0 0-1.41 0l-8.01 8A1 1 0 0 0 3 11v9c0 1.1.9 2 2 2h3c.55 0 1-.45 1-1v-7h6v7c0 .55.45 1 1 1h3c1.1 0 2-.9 2-2v-9c0-.27-.11-.52-.29-.71z">
-					</path>
-				</svg>
-				<span>
-					Hem
-				</span>
-				</a>
-				<div class="nav-nummer-wrap">
-				<span class="nav-nummer">
-					01
-				</span>
-				</div>
-			</div>
-			<hr>
-			</li>
-			<!-- Om mig -->
-			<li>
-			<div>
-				<a href="about.html">
-				<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24"  fill="#2421CF" viewBox="0 0 24 24" >
-					<!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
-					<path d="M12 2a5 5 0 1 0 0 10 5 5 0 1 0 0-10M4 22h16c.55 0 1-.45 1-1v-1c0-3.86-3.14-7-7-7h-4c-3.86 0-7 3.14-7 7v1c0 .55.45 1 1 1">
-					</path>
-				</svg>
-				<span>
-					Om mig
-				</span>
-				</a>
-				<div class="nav-nummer-wrap">
-				<span class="nav-nummer">
-					02
-				</span>
-				</div>
-			</div>
-			<hr>
-			</li>
-			<!-- Projektöversikt med dropdown -->
-			<li>
-			<div>
-				<a href="projectoverview.html">
-				<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24"  fill="#2421CF" viewBox="0 0 24 24" >
-					<!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
-					<path d="M20 4h-8.59L10 2.59C9.63 2.22 9.11 2 8.59 2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2">
-					</path>
-				</svg>
-				<span>
-					Projekt
-				</span>
-				</a>
-				<div class="nav-nummer-wrap">
-				<button class="dropdown-toggle" aria-expanded="false" aria-label="Visa undermeny för projekt">
-					<svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" >
-					<!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
-					<path d="m12 15.41 5.71-5.7-1.42-1.42-4.29 4.3-4.29-4.3-1.42 1.42z">
-					</path>
-					</svg>
-				</button>
-				<span class="nav-nummer">
-					03
-				</span>
-				</div>
-			</div>
-			<!-- Undermeny med länk till projektet Stratus -->
-			<ul class="nav-dropdown">
-				<li>
-				<a href="projectstratus.html">
-					Stratus
-				</a>
-				</li>
-			</ul>
-			<hr>
-			</li>
-		</ul>
-		<!-- Kontaktknapp längst ner -->
-		<div class="nav-bottom">
-			<a href="mailto:emmsjoholm@gmail.com" class="primary-btn">
-			Kontakta mig
-			</a>
-		</div>
-		</nav>
-	</header>
+  <header>
+    <!-- Logotyp med länk till startsida -->
+    <a href="index.html">
+      <img class="logo" src="assets/images/logo.webp" alt="Logotyp Emma Sjöholm">
+    </a>
+    <!-- Desktop navigering -->
+    <ul class="desktop-nav">
+      <li>
+        <a href="index.html">
+          Hem
+        </a>
+      </li>
+      <li>
+        <a href="about.html">
+          Om mig
+        </a>
+      </li>
+      <!-- Dropdown meny för projekt i desktop -->
+      <li class="desktop-dropdown">
+        <div class="desktop-dropdown-header">
+          <a href="project_overview.html">
+            Projekt
+          </a>
+          <!-- Öppna och stänga dropdown pil -->
+          <button class="dropdown-toggle btn-plain" aria-expanded="false" aria-label="Visa undermeny för projekt">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+              <path d="m12 15.41 5.71-5.7-1.42-1.42-4.29 4.3-4.29-4.3-1.42 1.42z">
+              </path>
+            </svg>
+          </button>
+        </div>
+        <!-- Undermeny med länkar till projekten -->
+        <ul class="desktop-dropdown-menu dropdown-list">
+          <li>
+            <a href="project_portfolio_website.html">
+              Portfolio webbplats
+            </a>
+          </li>
+          <li>
+            <a href="project_weather_app.html">
+              Stratus väderapp
+            </a>
+          </li>
+          <li>
+            <a href="project_ski_poster.html">
+              Affischer till skid-event
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <!-- Kontaktknapp till höger -->
+    <div class="desktop-contact">
+      <a href="mailto:emmsjoholm@gmail.com" class="primary-btn">
+        Kontakta mig
+      </a>
+    </div>
+    <!-- Mobil navigering -->
+    <!-- Hamburgareknapp som öppnar menyn -->
+    <button class="hamburger-btn btn-plain icon-circle" aria-label="Öppna meny" aria-expanded="false" aria-controls="nav-overlay">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+        <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+        <path d="M3 5h18v2H3zm0 6h18v2H3zm0 6h18v2H3z">
+        </path>
+      </svg>
+    </button>
+    <!-- Meny dold från början -->
+    <nav id="nav-overlay" aria-hidden="true">
+      <!-- Meny text och kryss för att stänga -->
+      <div class="row-between row-between--center">
+        <p class="nav-meny-text">
+          MENY
+        </p>
+        <button class="close-btn" aria-label="Stäng meny">
+          ✕
+        </button>
+      </div>
+      <ul class="nav-links stack">
+        <!-- Hem -->
+        <li>
+          <div>
+            <a href="index.html">
+              <div class="card-icon icon-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#1b1625" viewBox="0 0 24 24">
+                  <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                  <path d="M12.71 2.29a.996.996 0 0 0-1.41 0l-8.01 8A1 1 0 0 0 3 11v9c0 1.1.9 2 2 2h3c.55 0 1-.45 1-1v-7h6v7c0 .55.45 1 1 1h3c1.1 0 2-.9 2-2v-9c0-.27-.11-.52-.29-.71z">
+                  </path>
+                </svg>
+              </div>
+              <span>
+                Hem
+              </span>
+            </a>
+          </div>
+          <hr>
+        </li>
+        <!-- Om mig -->
+        <li>
+          <div>
+            <a href="about.html">
+              <div class="card-icon icon-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#161925" viewBox="0 0 24 24">
+                  <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                  <path d="M12 2a5 5 0 1 0 0 10 5 5 0 1 0 0-10M4 22h16c.55 0 1-.45 1-1v-1c0-3.86-3.14-7-7-7h-4c-3.86 0-7 3.14-7 7v1c0 .55.45 1 1 1">
+                  </path>
+                </svg>
+              </div>
+              <span>
+                Om mig
+              </span>
+            </a>
+          </div>
+          <hr>
+        </li>
+        <!-- Projektöversikt med dropdown -->
+        <li>
+          <div>
+            <a href="project_overview.html">
+              <div class="card-icon icon-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#161925" viewBox="0 0 24 24">
+                  <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                  <path d="M20 4h-8.59L10 2.59C9.63 2.22 9.11 2 8.59 2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2">
+                  </path>
+                </svg>
+              </div>
+              <span>
+                Projekt
+              </span>
+            </a>
+            <button class="dropdown-toggle btn-plain" aria-expanded="false" aria-label="Visa undermeny för projekt">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#161925" viewBox="0 0 24 24">
+                <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                <path d="m12 15.41 5.71-5.7-1.42-1.42-4.29 4.3-4.29-4.3-1.42 1.42z">
+                </path>
+              </svg>
+            </button>
+          </div>
+          <!-- Undermeny med länkar till projekten -->
+          <ul class="nav-dropdown dropdown-list">
+            <li>
+              <a href="project_portfolio_website.html">
+                Portfolio webbplats
+              </a>
+            </li>
+            <li>
+              <a href="project_weather_app.html">
+                Stratus väderapp
+              </a>
+            </li>
+            <li>
+              <a href="project_ski_poster.html">
+                Affischer till skid-event
+              </a>
+            </li>
+          </ul>
+          <hr>
+        </li>
+      </ul>
+      <!-- Kontaktknapp längst ner -->
+      <div class="nav-bottom stack-center">
+        <a href="mailto:emmsjoholm@gmail.com" class="primary-btn">
+          Kontakta mig
+        </a>
+      </div>
+    </nav>
+  </header>
 </html>
